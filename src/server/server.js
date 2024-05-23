@@ -27,7 +27,7 @@ const InputError = require('../exceptions/InputError');
         if (response instanceof InputError) {
             const newResponse = h.response({
                 status: 'fail',
-                message: `${response.message} Silakan gunakan foto lain.`
+                message: response.message
             })
             newResponse.code(response.statusCode)
             return newResponse;
@@ -36,9 +36,9 @@ const InputError = require('../exceptions/InputError');
         if (response.isBoom) {
             const newResponse = h.response({
                 status: 'fail',
-                message: response.message
+                message: 'Payload content length greater than maximum allowed: 1000000'
             })
-            newResponse.code(response.output.statusCode)
+            newResponse.code(413)
             return newResponse;
         }
 

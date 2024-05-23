@@ -2,7 +2,7 @@ const { Firestore } = require('@google-cloud/firestore');
 
 async function storeData(id, data) {
   const db = new Firestore({
-    databaseId: 'db-dinda'
+    databaseId: 'db-submission'
   });
 
   const predictCollection = db.collection('predictions');
